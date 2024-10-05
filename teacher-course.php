@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,16 +10,17 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- Include Header -->
     <?php include 'header.php'; ?>
-   
+
 
     <div class="container-fluid">
         <div class="row">
 
-         <!-- Include Sidebar -->
-    <?php include 'teacher-sidebar.php'; ?>
+            <!-- Include Sidebar -->
+            <?php include 'teacher-sidebar.php'; ?>
             <!-- Main Content -->
             <main class="course-timeline-main col bg-light">
                 <div>
@@ -73,16 +75,17 @@
     <script>
         // Optional: Activate the correct tab based on URL hash
         const triggerTabList = [].slice.call(document.querySelectorAll('#courseTab button'))
-        triggerTabList.forEach(function (triggerEl) {
+        triggerTabList.forEach(function(triggerEl) {
             const tabTrigger = new bootstrap.Tab(triggerEl)
             if (window.location.hash === triggerEl.dataset.bsTarget) {
                 tabTrigger.show()
             }
-            triggerEl.addEventListener('click', function (event) {
+            triggerEl.addEventListener('click', function(event) {
                 event.preventDefault()
                 window.location.hash = triggerEl.dataset.bsTarget
             })
         })
     </script>
 </body>
+
 </html>
