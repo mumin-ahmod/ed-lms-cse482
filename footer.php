@@ -22,10 +22,10 @@
             <!-- Contact Section -->
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
                 <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Contact</h5>
-                <p><i class="fa fa-home mr-3"></i> Address, City, Country</p>
-                <p><i class="fa fa-envelope mr-3"></i> email@example.com</p>
-                <p><i class="fa fa-phone mr-3"></i> +123 456 7890</p>
-                <p><i class="fa fa-print mr-3"></i> +123 456 7890</p>
+                <p><i class="fa fa-home mr-3"></i> Banani, Dhaka, Bangladesh</p>
+                <p><i class="fa fa-envelope mr-3"></i> edlms@gmail.com</p>
+                <p><i class="fa fa-phone mr-3"></i> +880 019 7130 6***</p>
+                <p><i class="fa fa-print mr-3"></i> +880 017 1480 2***</p>
             </div>
 
             <!-- Social Media Links -->
