@@ -69,7 +69,7 @@
                     </div>
 
                       <!-- Forgot Password Button -->
-                      <a href="register.php" class="btn btn-outline">Register</a>
+                      <a href="register_student.php" class="btn btn-outline">Register</a>
 
                     <!-- Forgot Password Button -->
                     <a href="#" class="forgot-password">Forgot Password?</a>
@@ -97,7 +97,7 @@
                     </div>
 
                       <!-- Forgot Password Button -->
-                      <a href="register.php" class="btn btn-outline">Register</a>
+                      <a href="register_teacher.php" class="btn btn-outline">Register</a>
 
                     <!-- Forgot Password Button -->
                     <a href="#" class="forgot-password">Forgot Password?</a>

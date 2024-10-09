@@ -44,7 +44,7 @@
         <hr class="mb-4">
         
         <!-- Copyright Section -->
-        <div class="row align-items-center">
+        <div class="row align-items-right">
             <div class="col-md-7 col-lg-8">
                 <p>&copy; 2024 My PHP Project. All rights reserved.</p>
             </div>
