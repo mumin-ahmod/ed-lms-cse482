@@ -9,6 +9,7 @@
 
     <!-- List of Existing Exams -->
     <!-- Loop through the exams for the course and display each one as a card -->
+    
     <!-- Example Exam 1 -->
     <div class="card mb-3">
         <div class="card-body">
@@ -17,6 +18,11 @@
             <p class="card-text"><small class="text-muted">Scheduled for October 5, 2024</small></p>
             <a href="edit-exam.php?id=1" class="btn btn-primary btn-sm">Edit Exam</a>
             <a href="delete-exam.php?id=1" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this exam?')">Delete Exam</a>
+            
+            <!-- Publish/Unpublish Button -->
+            <a href="publish-exam.php?id=1" class="btn btn-secondary btn-sm">
+                <i class="fa fa-toggle-on"></i> Publish
+            </a>
         </div>
     </div>
 
@@ -28,8 +34,16 @@
             <p class="card-text"><small class="text-muted">Scheduled for October 12, 2024</small></p>
             <a href="edit-exam.php?id=2" class="btn btn-primary btn-sm">Edit Exam</a>
             <a href="delete-exam.php?id=2" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this exam?')">Delete Exam</a>
+            
+            <!-- Publish/Unpublish Button -->
+            <a href="publish-exam.php?id=2" class="btn btn-secondary btn-sm">
+                <i class="fa fa-toggle-on"></i> Publish
+            </a>
         </div>
     </div>
 
     <!-- Add more exam cards dynamically -->
 </div>
+
+<!-- Include FontAwesome for Icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>

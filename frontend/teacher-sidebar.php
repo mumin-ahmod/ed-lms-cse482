@@ -14,7 +14,7 @@
                 <a class="nav-link <?php echo $currentPage == 'teacher-exams.php' ? 'active' : ''; ?> sidebar-link" href="teacher-exams.php">All Exams</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?php echo $currentPage == 'teacher-blogs.php' ? 'active' : ''; ?> sidebar-link" href="teacher-blogs.php">Blogs</a>
+                <a class="nav-link <?php echo $currentPage == 'blog-index.php' ? 'active' : ''; ?> sidebar-link" href="blog-index.php">Blogs</a>
             </li>
         </ul>
     </div>

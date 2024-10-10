@@ -7,6 +7,7 @@
     <title>Course Timeline</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -46,7 +47,7 @@
                     <div class="tab-content" id="courseTabContent">
                         <!-- All People Tab -->
                         <div class="tab-pane fade show active" id="all-people" role="tabpanel" aria-labelledby="all-people-tab">
-                            <?php include 'all_people.php'; ?>
+                            <?php include 'teacher-all-people.php'; ?>
                         </div>
 
                         <!-- Timeline Posts Tab -->

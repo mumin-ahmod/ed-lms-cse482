@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm py-3">
         <div class="container-fluid">
             <!-- Brand Name with Icon -->
-            <a class="navbar-brand d-flex align-items-center" href="index.php">
+            <a class="navbar-brand d-flex align-items-center" href="./home.php">
                 <img src="images/logo.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top me-2">
                 <span>ED LMS</span>
             </a>
@@ -18,19 +18,19 @@
                 <!-- Navbar Links aligned to the right -->
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                        <a class="nav-link active" aria-current="page" href="home.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="dashboard.php">Dashboard</a>
+                        <a class="nav-link" href="./dashboard.php">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="explore.php">Explore</a>
+                        <a class="nav-link" href="./explore.php">Explore</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="aboutus.php">About</a>
+                        <a class="nav-link" href="./aboutus.php">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.php">Contact</a>
+                        <a class="nav-link" href="./contact.php">Contact</a>
                     </li>
                 </ul>
 
@@ -43,7 +43,7 @@
                 <!-- Profile Link with Icon -->
                 <ul class="navbar-nav ms-3">
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center" href="dashboard.php">
+                        <a class="nav-link d-flex align-items-center" href="./dashboard.php">
                             <i class="fa fa-user me-1"></i> Profile
                         </a>
                     </li>

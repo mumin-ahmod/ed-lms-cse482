@@ -42,7 +42,8 @@
         <h2 class="form-title">Register</h2>
 
         <!-- Form -->
-        <form id="form-courses-website">
+        <form id="form-courses-website" action="backend/register.php" method="POST">
+
 
             <!-- Name -->
             <div class="mb-3">

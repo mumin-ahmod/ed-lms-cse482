@@ -10,7 +10,7 @@
                 <a class="nav-link sidebar-link" href="">Payments</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link sidebar-link" href="">My Blogs</a>
+                <a class="nav-link sidebar-link" href="blog-index.php">My Blogs</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link sidebar-link" href="">My Exams</a>
