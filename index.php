@@ -1,3 +1,3 @@
 
 
-    <?php include 'frontend/home.php'; ?>
+    <?php include './frontend/home.php'; ?>

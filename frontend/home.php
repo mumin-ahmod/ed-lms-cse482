@@ -14,12 +14,12 @@
 <body>
 
     <!-- Header/Navbar -->
-    <?php include './header.php'; ?>
+    <?php include 'header.php'; ?>
 
-    <?php include './login.php'; ?>
+    <?php include 'login.php'; ?>
 
     <!-- Footer -->
-    <?php include './footer.php'; ?>
+    <?php include 'footer.php'; ?>
 
      <!-- FontAwesome CDN -->
      <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>

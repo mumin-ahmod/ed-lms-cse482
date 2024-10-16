@@ -39,11 +39,20 @@
 
 <body>
 
+<?php
+// Check if the 'message' cookie is set
+if (isset($_COOKIE['message'])) {
+    echo "<div class='alert alert-warning'>" . htmlspecialchars($_COOKIE['message']) . "</div>";
+    // Clear the cookie by setting it to expire in the past
+    //setcookie('message', '', time() - 3600, '/');
+}
+?>
+
 
     <div class="container">
+
         <div class="login-container">
             <h2 class="text-center">Login</h2>
-
             <!-- Tabs -->
             <ul class="nav nav-tabs justify-content-center" id="loginTab" role="tablist">
                 <li class="nav-item" role="presentation">
@@ -57,9 +66,10 @@
             <!-- Tab Content -->
             <div class="tab-content tab-content-container" id="loginTabContent">
 
-                <!-- User Login Form -->
+                <!-- User Login Form (Student) -->
                 <div class="tab-pane fade show active" id="user-login" role="tabpanel" aria-labelledby="user-login-tab">
-                    <form id="user-login-form">
+                    <form id="user-login-form" action="../backend/login.php" method="POST">
+                        <input type="hidden" name="role" value="student"> <!-- Hidden field to identify role -->
 
                         <!-- Email -->
                         <div class="mb-3">
@@ -72,22 +82,16 @@
                             <label for="user-password-field" class="form-label">Password</label>
                             <input type="password" class="form-control" id="user-password-field" name="password" placeholder="Enter your password" required>
                         </div>
-
-                        <!-- Forgot Password Button -->
-                        <a href="register.php" class="btn btn-outline">Register</a>
-
-                        <!-- Forgot Password Button -->
-                        <a href="#" class="forgot-password">Forgot Password?</a>
-
-
+                        <a href="frontend/register.php" class="btn btn-outline">Register</a>
+                        <!-- Login Button -->
+                        <button type="submit" class="btn btn-primary login-btn">Login</button>
                     </form>
-                    <a href="dashboard.php">
-                        <button class="btn btn-primary login-btn" id="admin-login-btn">Login</button></a>
                 </div>
 
-                <!-- Admin Login Form -->
+                <!-- Admin Login Form (Teacher) -->
                 <div class="tab-pane fade" id="admin-login" role="tabpanel" aria-labelledby="admin-login-tab">
-                    <form id="admin-login-form">
+                    <form id="admin-login-form" action="../backend/login.php" method="POST">
+                        <input type="hidden" name="role" value="teacher"> <!-- Hidden field to identify role -->
 
                         <!-- Email -->
                         <div class="mb-3">
@@ -101,19 +105,14 @@
                             <input type="password" class="form-control" id="admin-password-field" name="password" placeholder="Enter your password" required>
                         </div>
 
-                        <!-- Forgot Password Button -->
-                        <a href="register.php" class="btn btn-outline">Register</a>
-
-                        <!-- Forgot Password Button -->
-                        <a href="#" class="forgot-password">Forgot Password?</a>
+                        <a href="frontend/register.php" class="btn btn-outline">Register</a>
 
                         <!-- Login Button -->
-
-
+                        <button type="submit" class="btn btn-primary login-btn">Login</button>
                     </form>
-                    <a href="teacher-dashboard.php">
-                        <button class="btn btn-primary login-btn" id="admin-login-btn">Login</button></a>
                 </div>
+
+
             </div>
         </div>
     </div>
