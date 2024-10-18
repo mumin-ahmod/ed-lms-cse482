@@ -5,7 +5,7 @@
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
                 <h5 class="text-uppercase mb-4 font-weight-bold text-warning">World Education</h5>
                 <p>
-                The World Education website is a comprehensive platform designed to enhance the learning experience for students and educators alike. 
+                    The World Education website is a comprehensive platform designed to enhance the learning experience for students and educators alike.
                 </p>
             </div>
 
@@ -24,7 +24,7 @@
                 <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Contact</h5>
                 <p><i class="fa fa-home mr-3"></i> Banani, Dhaka-1213, Bangladesh</p>
                 <p><i class="fa fa-envelope mr-3"></i> edlms@gmail.com</p>
-                <p><i class="fa fa-phone mr-3"></i> +880 019 7130 6***</p>
+                <p><i class="fa fa-phone mr-3"></i> +880 019 7130 6441</p>
                 <p><i class="fa fa-print mr-3"></i> +880 017 7890 2***</p>
             </div>
 
@@ -42,7 +42,7 @@
 
         <!-- Horizontal Line -->
         <hr class="mb-4">
-        
+
         <!-- Copyright Section -->
         <div class="row align-items-center">
             <div class="col-md-7 col-lg-8">
