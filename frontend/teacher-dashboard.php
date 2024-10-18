@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- Include Header -->
     <?php include 'header.php'; ?>
@@ -17,7 +19,7 @@
     <div class="container-fluid">
         <div class="row">
 
-        
+
             <!-- Sidebar Column -->
             <div class="col-md-3">
                 <!-- Sidebar should be included here and take up a column width -->
@@ -63,4 +65,5 @@
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

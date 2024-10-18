@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Course Timeline</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- Include Header -->
     <?php include 'header.php'; ?>
-   
+
 
     <div class="container-fluid">
         <div class="row">
 
-         <!-- Include Sidebar -->
-    <?php include 'teacher-sidebar.php'; ?>
+            <!-- Include Sidebar -->
+            <?php include 'teacher-sidebar.php'; ?>
             <!-- Main Content -->
             <main class="course-timeline-main col bg-light">
                 <div>
@@ -44,7 +47,7 @@
                     <div class="tab-content" id="courseTabContent">
                         <!-- All People Tab -->
                         <div class="tab-pane fade show active" id="all-people" role="tabpanel" aria-labelledby="all-people-tab">
-                            <?php include 'all_people.php'; ?>
+                            <?php include 'teacher-all-people.php'; ?>
                         </div>
 
                         <!-- Timeline Posts Tab -->
@@ -73,16 +76,17 @@
     <script>
         // Optional: Activate the correct tab based on URL hash
         const triggerTabList = [].slice.call(document.querySelectorAll('#courseTab button'))
-        triggerTabList.forEach(function (triggerEl) {
+        triggerTabList.forEach(function(triggerEl) {
             const tabTrigger = new bootstrap.Tab(triggerEl)
             if (window.location.hash === triggerEl.dataset.bsTarget) {
                 tabTrigger.show()
             }
-            triggerEl.addEventListener('click', function (event) {
+            triggerEl.addEventListener('click', function(event) {
                 event.preventDefault()
                 window.location.hash = triggerEl.dataset.bsTarget
             })
         })
     </script>
 </body>
+
 </html>
