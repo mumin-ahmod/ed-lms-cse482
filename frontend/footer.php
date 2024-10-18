@@ -25,7 +25,7 @@
                 <p><i class="fa fa-home mr-3"></i> Banani, Dhaka-1213, Bangladesh</p>
                 <p><i class="fa fa-envelope mr-3"></i> edlms@gmail.com</p>
                 <p><i class="fa fa-phone mr-3"></i> +880 019 7130 6441</p>
-                <p><i class="fa fa-print mr-3"></i> +880 017 7890 2***</p>
+                <p><i class="fa fa-print mr-3"></i> +880 017 7890 2448p>
             </div>
 
             <!-- Social Media Links -->
