@@ -7,12 +7,12 @@
                 <img src="images/logo.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top me-2">
                 <span>ED LMS</span>
             </a>
-            
+
             <!-- Toggler for Mobile View -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <!-- Navbar Content -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <!-- Navbar Links aligned to the right -->
@@ -37,7 +37,7 @@
                 <!-- Search Form with FontAwesome Icon -->
                 <form class="d-flex align-items-center ms-3">
                     <input class="form-control form-control-sm me-2" type="search" placeholder="Search" aria-label="Search">
-                    <a href="" class="btn btn-sm btn-outline-light align-items-center">  <i class="fa fa-search"></i></a>
+                    <a href="" class="btn btn-sm btn-outline-light align-items-center"> <i class="fa fa-search"></i></a>
                 </form>
 
                 <!-- Profile Link with Icon -->
