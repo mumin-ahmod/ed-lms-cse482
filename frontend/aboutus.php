@@ -9,6 +9,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <!-- Include Navbar -->
@@ -68,9 +69,10 @@
         </div>
     </section>
 
-        <!-- Footer -->
-        <?php include 'footer.php'; ?>
+    <!-- Footer -->
+    <?php include 'footer.php'; ?>
 
     <script src="script.js"></script>
 </body>
+
 </html>
