@@ -1,3 +1,18 @@
+<?php
+// Include the database connection
+require_once '../backend/db.php'; // Adjust the path if db.php is in the root directory
+
+try {
+    // Fetch all courses from the database
+    $sql = "SELECT * FROM course";
+    $stmt = $pdo->query($sql);
+    $courses = $stmt->fetchAll();
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,6 +24,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
+    <!-- Add this in the head section of explore.php -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 
 <body>
@@ -20,44 +38,32 @@
     <div class="container py-5">
         <h1 class="text-center mb-5">Explore Courses</h1>
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            <!-- Course Card 1 -->
-            <div class="col">
-                <div class="card h-100 course-card">
-                    <img src="images/course1.jpeg" class="card-img-top" alt="Course 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Course Title 1</h5>
-                        <p class="card-text">Learn the essentials of web development with this comprehensive course.</p>
-                        <p class="course-meta">Level: Beginner | Duration: 10 weeks</p>
-                        <a href="course.php" class="btn btn-primary">Enroll</a>
+            <?php if (!empty($courses)) : ?>
+                <?php foreach ($courses as $course) : ?>
+                    <div class="col">
+                        <div class="card h-100 course-card">
+                            <img src="../images/<?php echo htmlspecialchars($course['Image']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($course['Title']); ?>">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo htmlspecialchars($course['Title']); ?></h5>
+                                <p class="card-text"><?php echo htmlspecialchars($course['Description']); ?></p>
+                                <p class="course-meta">Start Date: <?php echo htmlspecialchars($course['Start_date']); ?></p>
+                                <?php if (!empty($course['End_date'])): ?>
+                                    <p class="course-meta">End Date: <?php echo htmlspecialchars($course['End_date']); ?></p>
+                                <?php endif; ?>
+                                <a href="course.php?id=<?php echo htmlspecialchars($course['Id']); ?>" class="btn btn-primary">Enroll</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <!-- Course Card 2 -->
-            <div class="col">
-                <div class="card h-100 course-card">
-                    <img src="images/course2.jpg" class="card-img-top" alt="Course 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Course Title 2</h5>
-                        <p class="card-text">Master data science and machine learning in this hands-on course.</p>
-                        <p class="course-meta">Level: Intermediate | Duration: 12 weeks</p>
-                        <a href="course.php" class="btn btn-primary">Enroll</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Course Card 3 -->
-            <div class="col">
-                <div class="card h-100 course-card">
-                    <img src="images/course3.png" class="card-img-top" alt="Course 3">
-                    <div class="card-body">
-                        <h5 class="card-title">Course Title 3</h5>
-                        <p class="card-text">Explore advanced Python programming techniques in this expert-level course.</p>
-                        <p class="course-meta">Level: Advanced | Duration: 8 weeks</p>
-                        <a href="course.php" class="btn btn-primary">Enroll</a>
-                    </div>
-                </div>
-            </div>
+                <?php endforeach; ?>
+            <?php else : ?>
+                <p class="text-center">No courses available at the moment.</p>
+            <?php endif; ?>
         </div>
     </div>
+
+    <div id="test"></div>
+
+    <script src="../frontend/script.js"></script>
     <!-- Footer -->
     <?php include 'footer.php'; ?>
 

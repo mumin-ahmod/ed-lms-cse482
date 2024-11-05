@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title>Ed Lms</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -39,14 +39,16 @@
 
 <body>
 
-<?php
-// Check if the 'message' cookie is set
-if (isset($_COOKIE['message'])) {
-    echo "<div class='alert alert-warning'>" . htmlspecialchars($_COOKIE['message']) . "</div>";
-    // Clear the cookie by setting it to expire in the past
-    //setcookie('message', '', time() - 3600, '/');
-}
-?>
+    <!-- Include Navbar -->
+    <?php include 'header.php'; ?>
+    <?php
+    // Check if the 'message' cookie is set
+    if (isset($_COOKIE['message'])) {
+        echo "<div class='alert alert-warning'>" . htmlspecialchars($_COOKIE['message']) . "</div>";
+        // Clear the cookie by setting it to expire in the past
+        //setcookie('message', '', time() - 3600, '/');
+    }
+    ?>
 
 
     <div class="container">
@@ -82,7 +84,7 @@ if (isset($_COOKIE['message'])) {
                             <label for="user-password-field" class="form-label">Password</label>
                             <input type="password" class="form-control" id="user-password-field" name="password" placeholder="Enter your password" required>
                         </div>
-                        <a href="frontend/register.php" class="btn btn-outline">Register</a>
+                        <a href="register.php" class="btn btn-outline">Register</a>
                         <!-- Login Button -->
                         <button type="submit" class="btn btn-primary login-btn">Login</button>
                     </form>
@@ -105,7 +107,7 @@ if (isset($_COOKIE['message'])) {
                             <input type="password" class="form-control" id="admin-password-field" name="password" placeholder="Enter your password" required>
                         </div>
 
-                        <a href="frontend/register.php" class="btn btn-outline">Register</a>
+                        <a href="register.php" class="btn btn-outline">Register</a>
 
                         <!-- Login Button -->
                         <button type="submit" class="btn btn-primary login-btn">Login</button>
@@ -116,7 +118,7 @@ if (isset($_COOKIE['message'])) {
             </div>
         </div>
     </div>
-
+    <?php include 'footer.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

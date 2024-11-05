@@ -10,16 +10,11 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <!-- Include Header -->
     <?php include 'header.php'; ?>
-
-
     <div class="container-fluid">
         <div class="row">
-
-
             <!-- Sidebar Column -->
             <div class="col-md-3">
                 <!-- Sidebar should be included here and take up a column width -->

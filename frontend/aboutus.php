@@ -27,7 +27,7 @@
     <!-- Mission and Life at Company Section -->
     <section class="company-section">
         <div class="mission animate-slide-left">
-            <img src="images/ourmission.png" alt="Our Mission Image">
+            <img src="../images/ourmission.png" alt="Our Mission Image">
             <div class="mission-text">
                 <h2>Our Mission</h2>
                 <p>Our mission is to help 1 million people secure jobs by 2030. We are dedicated to empowering individuals with the knowledge and expertise needed to thrive in the dynamic job market. Through our programs, we aim to enhance technical skills and soft skills like creativity, critical thinking, and adaptability, creating a pool of highly skilled professionals.</p>
@@ -39,11 +39,11 @@
                 <h2>World Education</h2>
                 <p>At World Education, we believe in fostering team collaboration, a balanced work culture, and a friendly environment. We are committed to creating a space where ideas thrive, innovation blossoms, and every team member feels valued and inspired.</p>
             </div>
-            <img src="images/lifeatcompany.png" alt="Life at Company Image">
+            <img src="../images/lifeatcompany.png" alt="Life at Company Image">
         </div>
         <hr>
         <div class="our-services animate-slide-left">
-            <img src="images/customer-service.png" alt="Our Services">
+            <img src="../images/customer-service.png" alt="Our Services">
             <div class="services">
                 <h2>Our Services</h2>
                 <p>We provide a range of services including academic, career, and skill development programs. Our goal is to foster collaboration, balance work culture, and innovation.</p>

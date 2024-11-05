@@ -52,13 +52,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         // Invalid credentials
         setcookie('message', 'Invalid email, password or role.', time() + 5, '/');
-        header('Location: ../frontend/home.php'); // Redirect back to login page
+        header('Location: ../frontend/login.php'); // Redirect back to login page
         exit();
     }
 } else {
     // If the request method is not POST, deny access
     setcookie('message', 'Invalid request method.', time() + 5, '/');
-    header('Location: ../frontend/home.php'); // Redirect back to login page
+    header('Location: ../frontend/login.php'); // Redirect back to login page
     exit();
 }
-?>

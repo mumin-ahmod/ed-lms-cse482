@@ -26,6 +26,4 @@ try {
     echo "Connection failed: " . $e->getMessage();
     exit();
 }
-
-// Optionally return the PDO instance if needed in other files
-return $pdo;
+?>
