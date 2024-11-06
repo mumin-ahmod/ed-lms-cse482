@@ -36,16 +36,17 @@
 
                 <!-- Search Form with FontAwesome Icon -->
                 <form class="d-flex align-items-center ms-3">
-                    <input type="text" name="live_search" id="live_search" autocomplete="off"
+                    <input class="form-control form-control-sm me-2" type="text" name="live_search" id="live_search" autocomplete="off"
                         placeholder="Search ...">
+                    <div id="test"></div>
                 </form>
+                <script src="../frontend/searchscript.js"></script>
                 <ul class="navbar-nav ms-3">
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center" href="./login.php">
                             <i class="fa fa-user me-1"></i> Profile
                         </a>
                     </li>
-                    
                 </ul>
             </div>
         </div>

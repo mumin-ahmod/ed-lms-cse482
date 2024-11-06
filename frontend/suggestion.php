@@ -1,22 +1,28 @@
 <?php
-include '../backend/db.php'; // Make sure the path to db.php is correct
+// Include the database configuration file with PDO connection
+include '../backend/db.php';
 
 if (isset($_POST['suggestion'])) {
-    $suggestion = htmlspecialchars(ucfirst($_POST['suggestion'])); // Escape special characters for HTML
-
-    // Prepare the SQL statement
+    // Use PDO to safely prepare and execute the query
+    $suggestion = ucfirst($_POST['suggestion']);
     $query = "SELECT Title FROM course WHERE Title LIKE :suggestion";
+
+    // Prepare the statement
     $stmt = $pdo->prepare($query);
 
-    // Bind the parameter
-    $stmt->execute(['suggestion' => "%$suggestion%"]);
+    // Bind the parameter with wildcards for partial matching
+    $stmt->execute(['suggestion' => '%' . $suggestion . '%']);
 
-    // Fetch results
+    // Check if there are any results
     if ($stmt->rowCount() > 0) {
+        // Fetch and display each row
         while ($row = $stmt->fetch()) {
-            echo $row['Title'] . "<br />"; // Display the course title
+            echo $row['Title'] . "<br />";
         }
     } else {
-        echo "No courses found.";
+        echo "No Title found.";
     }
 }
+
+// Close the connection (optional, as PDO does this automatically at the end of the script)
+$pdo = null;

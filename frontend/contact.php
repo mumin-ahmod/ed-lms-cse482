@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <title>Contact Us</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <!-- Include Navbar -->
@@ -84,19 +87,19 @@
         <div class="branch">
             <h3>Dhanmondi - Branch</h3>
             <p><i class="fa fa-map-marker"></i> **, Road 3/A, Satmasjid Road, Dhanmondi, Dhaka - 1209</p>
-            <p><i class="fa fa-phone"></i> +88 014********</</p>
+            <p><i class="fa fa-phone"></i> +88 014********</< /p>
         </div>
 
         <div class="branch">
             <h3>Uttara - Branch</h3>
             <p><i class="fa fa-map-marker"></i> **, Gausul Azam Ave, Sector 13, Uttara, Dhaka - 1230</p>
-            <p><i class="fa fa-phone"></i> +88 019********</</p>
+            <p><i class="fa fa-phone"></i> +88 019********</< /p>
         </div>
 
         <div class="branch">
             <h3>Siddeshwari - Branch</h3>
             <p><i class="fa fa-map-marker"></i> **,41 Siddeshwari Circular Road, Dhaka - 1217</p>
-            <p><i class="fa fa-phone"></i> +88 014********</</p>
+            <p><i class="fa fa-phone"></i> +88 014********</< /p>
         </div>
 
         <div class="email-contact">
@@ -104,9 +107,10 @@
         </div>
     </div>
 
-        <!-- Footer -->
-        <?php include 'footer.php'; ?>
+    <!-- Footer -->
+    <?php include 'footer.php'; ?>
 
     <script src="script.js"></script>
 </body>
+
 </html>

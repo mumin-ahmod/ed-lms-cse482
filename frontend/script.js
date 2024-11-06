@@ -34,28 +34,3 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener('scroll', checkPosition);
     checkPosition(); // Initial check in case elements are in view on load
 });
-
-
-
-//// Live Search javascript 
-$(document).ready(function() {
-    $('#live_search').on('input', function() {
-        let suggestion = $(this).val();
-
-        if (suggestion.length > 0) {
-            $.ajax({
-                url: 'suggestion.php',
-                method: 'POST',
-                data: { suggestion: suggestion },
-                success: function(response) {
-                    $('#test').html(response);
-                },
-                error: function(xhr, status, error) {
-                    console.error("AJAX error: ", error);
-                }
-            });
-        } else {
-            $('#test').html('');
-        }
-    });
-});
