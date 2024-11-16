@@ -37,10 +37,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Redirect to a success page or display a success message
         header("Location: ../frontend/success.php"); // Replace with your success page
         exit();
-
     } catch (PDOException $e) {
         // Handle any errors
         echo "Error: " . $e->getMessage();
     }
 }
-?>

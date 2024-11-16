@@ -20,13 +20,9 @@ try {
     // Optional: Turn on error reporting
     // error_reporting(E_ALL);
     // ini_set('display_errors', 1);
-    
+
 } catch (PDOException $e) {
     // Handle connection errors
     echo "Connection failed: " . $e->getMessage();
     exit();
 }
-
-// Optionally return the PDO instance if needed in other files
-return $pdo;
-?>

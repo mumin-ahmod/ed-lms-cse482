@@ -34,4 +34,3 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener('scroll', checkPosition);
     checkPosition(); // Initial check in case elements are in view on load
 });
-

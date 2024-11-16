@@ -10,5 +10,5 @@ The project integrates various technologies such as PHP, JavaScript, HTML, CSS, 
 
 **Members:**   
 Mumin Ahmod  
-Mahedi Hasan  
+S. M. Mahedi Hasan  
 Muhtadina Serniabat Tasin  

@@ -7,15 +7,11 @@
                 <a class="nav-link active sidebar-link" href="dashboard.php">My Courses</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link sidebar-link" href="">Payments</a>
+                <a class="nav-link sidebar-link" href="studentpayment.php">Payments</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link sidebar-link" href="blog-index.php">My Blogs</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link sidebar-link" href="">My Exams</a>
-            </li>
-            <!-- Add more links as necessary -->
         </ul>
     </div>
 </aside>
