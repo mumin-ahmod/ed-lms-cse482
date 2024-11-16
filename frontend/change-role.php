@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- Include Header -->
     <?php include 'header.php'; ?>
@@ -22,7 +24,7 @@
             <main class="admin-dashboard-content col bg-white mt-5" style="margin-left: 250px;">
                 <div class="p-3">
                     <h2>Change User Roles</h2>
-                    
+
                     <!-- User List Table -->
                     <table class="table table-bordered table-hover mt-4">
                         <thead>
@@ -36,23 +38,23 @@
                         </thead>
                         <tbody>
                             <?php
-                            // Sample users array (Replace this with database query to fetch users)
-                            $users = [
-                                ['id' => 1, 'name' => 'John Doe', 'email' => 'john@example.com', 'role' => 'student'],
-                                ['id' => 2, 'name' => 'Jane Smith', 'email' => 'jane@example.com', 'role' => 'teacher'],
-                                ['id' => 3, 'name' => 'Mike Johnson', 'email' => 'mike@example.com', 'role' => 'student']
-                            ];
+                            include '../backend/db.php'; // Adjust the path as needed
 
-                            // Loop through users and display in the table
-                            foreach ($users as $user) {
+                            // Fetch all users from the database
+                            $sql = "SELECT Id, Name, Email, Role FROM users";
+                            $stmt = $pdo->query($sql);
+
+                            // Loop through the fetched users and display them in the table
+                            while ($user = $stmt->fetch()) {
                                 echo "<tr>
-                                    <td>{$user['id']}</td>
-                                    <td>{$user['name']}</td>
-                                    <td>{$user['email']}</td>
-                                    <td>{$user['role']}</td>
+                                    <td>" . htmlspecialchars($user['Id']) . "</td>
+                                    <td>" . htmlspecialchars($user['Name']) . "</td>
+                                    <td>" . htmlspecialchars($user['Email']) . "</td>
+                                    <td>" . htmlspecialchars($user['Role']) . "</td>
                                     <td>
-                                        <a href='change-role-handler.php?user_id={$user['id']}&role=teacher' class='btn btn-sm btn-warning me-2'>Make Teacher</a>
-                                        <a href='change-role-handler.php?user_id={$user['id']}&role=admin' class='btn btn-sm btn-primary'>Make Admin</a>
+                                        <a href='../backend/change-role-handler.php?user_id=" . htmlspecialchars($user['Id']) . "&role=teacher' class='btn btn-sm btn-warning me-2'>Make Teacher</a>
+                                        <a href='../backend/change-role-handler.php?user_id=" . htmlspecialchars($user['Id']) . "&role=admin' class='btn btn-sm btn-primary me-2'>Make Admin</a>
+                                        <a href='../backend/change-role-handler.php?user_id=" . htmlspecialchars($user['Id']) . "&role=student' class='btn btn-sm btn-success'>Make Student</a>
                                     </td>
                                 </tr>";
                             }
@@ -64,6 +66,7 @@
         </div>
     </div>
 
-    <script src="path/to/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

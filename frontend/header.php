@@ -1,6 +1,6 @@
 <header>
     <!-- Bootstrap Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm py-3">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-custom shadow-sm py-3">
         <div class="container-fluid">
             <!-- Brand Name with Icon -->
             <a class="navbar-brand d-flex align-items-center" href="./home.php">
@@ -36,7 +36,7 @@
 
                 <!-- Search Form with FontAwesome Icon -->
                 <form class="d-flex align-items-center ms-3">
-                    <input class="form-control form-control-sm me-2" type="text" name="live_search" id="live_search" autocomplete="off"
+                    <input class="form-control form-control-sm align-items-center me-2" type="text" name="live_search" id="live_search" autocomplete="off"
                         placeholder="Search ...">
                     <div id="test"></div>
                 </form>

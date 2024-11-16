@@ -1,4 +1,12 @@
-/* About Us  */
+/* Custom navbar background color */
+.bg-custom {
+    background-color: #153448 !important;
+}
+.bg-custom-f{
+    background-color: #948979 !important;
+}
+
+/* About Us */
 
 /* Global Styles */
 body {
@@ -113,10 +121,9 @@ footer {
     font-size: 1rem;
 }
 
-
 /* Welcome Section Styles */
 .welcome-section {
-    background-color: #0da412;
+    background-color: #3C5B6F;
     color: #fff;
     padding: 40px 20px;
     text-align: center;
@@ -175,7 +182,7 @@ footer {
     font-size: 28px;
     color: #333;
     margin-bottom: 20px;
-    border-bottom: 3px solid #00b4d8;
+    border-bottom: 3px solid #948979;
     padding-bottom: 10px;
 }
 
@@ -194,7 +201,7 @@ footer {
 .privacy-section h2 {
     font-size: 28px;
     color: #006f8d;
-    border-bottom: 2px solid #00b4d8;
+    border-bottom: 2px solid #948979;
     padding-bottom: 10px;
     margin-bottom: 20px;
 }
@@ -214,7 +221,7 @@ footer {
 .terms-section h2 {
     font-size: 28px;
     color: #006f8d;
-    border-bottom: 2px solid #00b4d8;
+    border-bottom: 2px solid #948979;
     padding-bottom: 10px;
     margin-bottom: 20px;
 }
@@ -280,8 +287,7 @@ footer {
     }
 }
 
-
-/* Contact  */
+/* Contact */
 
 .contact-section {
     background-color: #fff;
@@ -296,7 +302,7 @@ footer {
     font-size: 28px;
     color: #333;
     margin-bottom: 20px;
-    border-bottom: 3px solid #0da412;
+    border-bottom: 3px solid #948979;
     padding-bottom: 10px;
     text-align: center;
 }
@@ -319,6 +325,7 @@ label {
     margin-bottom: 5px;
     color: #333;
 }
+
 span {
     color: #f9e8e7;
 }
@@ -333,11 +340,9 @@ input[type="text"], input[type="email"], input[type="tel"], textarea {
     box-sizing: border-box;
 }
 
-
-
 button.btn-submit {
     padding: 10px 20px;
-    background-color: #0da412;
+    background-color: #948979;
     color: #fff;
     font-size: 16px;
     border: none;
@@ -390,7 +395,7 @@ button.btn-submit:hover {
     font-size: 30px;
     color: #333;
     margin-bottom: 20px;
-    border-bottom: 3px solid #0da412;
+    border-bottom: 3px solid #948979;
     padding-bottom: 10px;
 }
 
@@ -404,7 +409,7 @@ button.btn-submit:hover {
 
 .branch h3 {
     font-size: 22px;
-    color: #0da412;
+    color: #948979;
     margin-bottom: 10px;
 }
 
@@ -441,8 +446,6 @@ button.btn-submit:hover {
     margin-right: 10px;
 }
 
-
-
 /* Sidebar Styling */
 .student-dashboard-sidebar {
     height: 100vh; /* Full height for the sidebar */
@@ -466,17 +469,17 @@ button.btn-submit:hover {
 }
 
 .sidebar-link:hover {
-    background-color: #007bff; /* Change background on hover */
+    background-color: #DFD0B8; /* Change background on hover */
     color: white; /* Change text color on hover */
 }
 
 .nav-link.active {
-    background-color: #007bff; /* Active link background */
+    background-color: #DFD0B8; /* Active link background */
     color: white; /* Active link text color */
 }
 
 .nav-link.active:hover {
-    background-color: #0056b3; /* Darker blue for active link on hover */
+    background-color: #948979; /* Darker color for active link on hover */
 }
 
 /* sidebar ends */
@@ -499,7 +502,7 @@ button.btn-submit:hover {
 .section-title {
     font-size: 1.5rem; /* Title size for sections */
     margin-bottom: 10px; /* Space below section titles */
-    color: #007bff; /* Accent color for section titles */
+    color: #DFD0B8; /* Accent color for section titles */
 }
 
 /* Button Styles */
@@ -508,7 +511,7 @@ button.btn-submit:hover {
 }
 
 .btn-group .btn:hover {
-    background-color: #0056b3; /* Darker blue for hover effect */
+    background-color: #948979; /* Darker color for hover effect */
     transform: scale(1.05); /* Slight scale effect on hover */
 }
 

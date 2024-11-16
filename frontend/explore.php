@@ -2,15 +2,7 @@
 // Include the database connection
 require_once '../backend/db.php'; // Adjust the path if db.php is in the root directory
 
-try {
-    // Fetch all courses from the database
-    $sql = "SELECT * FROM course";
-    $stmt = $pdo->query($sql);
-    $courses = $stmt->fetchAll();
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-    exit();
-}
+// Fetch all courses from the database (moved to AJAX)
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +11,8 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <title>Explore Courses</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -46,50 +40,52 @@ try {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Check if course data is in localStorage
-            let courses = localStorage.getItem("courses");
-
-            if (courses) {
-                // If data exists in localStorage, parse and display it
-                displayCourses(JSON.parse(courses));
-            } else {
-                // If not in localStorage, fetch from PHP and store it
-                fetchCoursesFromPHP();
-            }
+            // Fetch courses from the server via AJAX
+            fetchCoursesFromServer();
         });
 
-        function fetchCoursesFromPHP() {
-            // Get courses data from PHP and store it in localStorage
-            const courses = <?php echo json_encode($courses); ?>;
-            localStorage.setItem("courses", JSON.stringify(courses));
-            displayCourses(courses);
+        function fetchCoursesFromServer() {
+            // AJAX request to fetch courses from PHP
+            $.ajax({
+                url: '../backend/fetch-courses.php', // PHP script to fetch courses
+                method: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    // If data is available, display it
+                    if (data.length > 0) {
+                        displayCourses(data);
+                    } else {
+                        document.getElementById("courseContainer").innerHTML = "<p class='text-center'>No courses available at the moment.</p>";
+                    }
+                },
+                error: function() {
+                    console.error('Error fetching courses from server.');
+                    document.getElementById("courseContainer").innerHTML = "<p class='text-center'>Error loading courses. Please try again later.</p>";
+                }
+            });
         }
 
         function displayCourses(courses) {
             const courseContainer = document.getElementById("courseContainer");
             courseContainer.innerHTML = ""; // Clear loading message or previous content
 
-            if (courses.length > 0) {
-                courses.forEach(course => {
-                    const courseCard = `
-                        <div class="col">
-                            <div class="card h-100 course-card">
-                                <img src="../images/${course.Image}" class="card-img-top" alt="${course.Title}">
-                                <div class="card-body">
-                                    <h5 class="card-title">${course.Title}</h5>
-                                    <p class="card-text">${course.Description}</p>
-                                    <p class="course-meta">Start Date: ${course.Start_date}</p>
-                                    ${course.End_date ? `<p class="course-meta">End Date: ${course.End_date}</p>` : ""}
-                                    <a href="course.php?id=${course.Id}" class="btn btn-primary">Enroll</a>
-                                </div>
+            courses.forEach(course => {
+                const courseCard = `
+                    <div class="col">
+                        <div class="card h-100 course-card">
+                            <img src="../images/${course.Image}" class="card-img-top" alt="${course.Title}">
+                            <div class="card-body">
+                                <h5 class="card-title">${course.Title}</h5>
+                                <p class="card-text">${course.Description}</p>
+                                <p class="course-meta">Start Date: ${course.Start_date}</p>
+                                ${course.End_date ? `<p class="course-meta">End Date: ${course.End_date}</p>` : ""}
+                                <a href="course.php?id=${course.Id}" class="btn btn-primary">Enroll</a>
                             </div>
                         </div>
-                    `;
-                    courseContainer.innerHTML += courseCard;
-                });
-            } else {
-                courseContainer.innerHTML = "<p class='text-center'>No courses available at the moment.</p>";
-            }
+                    </div>
+                `;
+                courseContainer.innerHTML += courseCard;
+            });
         }
     </script>
 </body>
