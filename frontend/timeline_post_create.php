@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- Header (optional, if you want to include a site-wide header) -->
     <?php include 'header.php'; ?>
@@ -23,7 +25,9 @@
         </div>
 
         <!-- Post Creation Form -->
-        <form action="submit-post.php" method="POST">
+        <form action="../backend/submit-post.php" method="POST">
+            <input type="hidden" name="course_id" value="<?php echo htmlspecialchars($_GET['id']); ?>">
+
             <div class="mb-3">
                 <label for="postTitle" class="form-label">Post Title</label>
                 <input type="text" class="form-control" id="postTitle" name="postTitle" required>
@@ -34,24 +38,14 @@
                 <textarea class="form-control" id="postContent" name="postContent" rows="6" required></textarea>
             </div>
 
-            <div class="mb-3">
-                <label for="postCategory" class="form-label">Category</label>
-                <select class="form-select" id="postCategory" name="postCategory" required>
-                    <option value="">Select Category</option>
-                    <option value="news">News</option>
-                    <option value="announcement">Announcement</option>
-                    <option value="discussion">Discussion</option>
-                </select>
-            </div>
-
             <!-- Submit Button -->
             <button type="submit" class="btn btn-success">
                 <i class="bi bi-upload"></i> Submit Post
             </button>
         </form>
-    </div>
 
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap JS Bundle -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

@@ -18,7 +18,7 @@
     <!-- Header/Navbar -->
 
 
-    <?php include 'login.php'; ?>
+    <?php include  __DIR__.'/login.php'; ?>
 
     <!-- Footer -->
 

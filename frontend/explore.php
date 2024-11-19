@@ -79,7 +79,11 @@ require_once '../backend/db.php'; // Adjust the path if db.php is in the root di
                                 <p class="card-text">${course.Description}</p>
                                 <p class="course-meta">Start Date: ${course.Start_date}</p>
                                 ${course.End_date ? `<p class="course-meta">End Date: ${course.End_date}</p>` : ""}
-                                <a href="course.php?id=${course.Id}" class="btn btn-primary">Enroll</a>
+                             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#enrollModal" data-course-id="${course.Id}" data-course-title="${course.Title}">
+    Enroll
+</button>
+
+
                             </div>
                         </div>
                     </div>
@@ -87,7 +91,50 @@ require_once '../backend/db.php'; // Adjust the path if db.php is in the root di
                 courseContainer.innerHTML += courseCard;
             });
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const enrollModal = document.getElementById('enrollModal');
+
+            enrollModal.addEventListener('show.bs.modal', (event) => {
+                // Button that triggered the modal
+                const button = event.relatedTarget;
+
+                // Extract course information from data attributes
+                const courseId = button.getAttribute('data-course-id');
+                const courseTitle = button.getAttribute('data-course-title');
+
+                // Update the modal's content
+                document.getElementById('modalCourseId').value = courseId;
+                document.getElementById('modalCourseName').textContent = courseTitle;
+            });
+        });
     </script>
+
+    <!-- Enrollment Confirmation Modal -->
+    <div class="modal fade" id="enrollModal" tabindex="-1" aria-labelledby="enrollModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="enrollModalLabel">Confirm Enrollment</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to enroll in <strong id="modalCourseName"></strong>?
+                </div>
+                <form method="POST" action="../backend/enroll.php">
+                    <input type="hidden" name="course_id" id="modalCourseId">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Enroll</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
 </body>
 
 </html>

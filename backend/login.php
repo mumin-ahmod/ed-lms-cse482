@@ -3,6 +3,8 @@
 require_once 'db.php';
 
 session_start(); // Start the session
+$_SESSION['test'] = 'Session is working!';
+echo session_id(); // This will output the session ID
 
 // Default admin credentials
 $admin_email = 'admin@gmail.com';
@@ -28,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         session_regenerate_id(true);
         $_SESSION['user_id'] = 'admin';
         $_SESSION['role'] = 'admin';
+        $_SESSION['name'] = 'Admin';
 
         // Redirect to the admin dashboard
         header('Location: ../frontend/admin-dashboard.php');
@@ -47,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         session_regenerate_id(true);
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['role'] = $user['role'];
+        $_SESSION['name'] = $user['name'];
 
         // Redirect based on role
         if ($role === 'student') {

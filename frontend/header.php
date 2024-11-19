@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-custom shadow-sm py-3">
         <div class="container-fluid">
             <!-- Brand Name with Icon -->
-            <a class="navbar-brand d-flex align-items-center" href="./home.php">
+            <a class="navbar-brand d-flex align-items-center" href="../index.php">
                 <img src="../images/logo.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top me-2">
                 <span>ED LMS</span>
             </a>
@@ -32,6 +32,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="./contact.php">Contact</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./chat.php">Chat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./dashboard.php">Dashboard</a>
+                    </li>
                 </ul>
 
                 <!-- Search Form with FontAwesome Icon -->
@@ -41,12 +47,25 @@
                     <div id="test"></div>
                 </form>
                 <script src="../frontend/searchscript.js"></script>
+                <!-- Profile Dropdown or Login Link -->
                 <ul class="navbar-nav ms-3">
-                    <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center" href="./login.php">
-                            <i class="fa fa-user me-1"></i> Profile
-                        </a>
-                    </li>
+                    <?php if (isset($_SESSION['name'])): ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-user me-1"></i> <?php echo htmlspecialchars($_SESSION['name']); ?>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="./profile.php">Profile</a></li>
+                                <li><a class="dropdown-item" href="../backend/logout.php">Logout</a></li>
+                            </ul>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center" href="../index.php">
+                                <i class="fa fa-user me-1"></i> Profile
+                            </a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>

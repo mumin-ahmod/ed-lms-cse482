@@ -1,11 +1,25 @@
 <?php
 // db.php
+require __DIR__ . '/../vendor/autoload.php'; 
 
 // Database configuration
 $host = 'localhost'; // Database host, usually 'localhost'
 $dbname = 'ed_lms'; // Replace with your database name
 $username = 'root'; // Replace with your database username
 $password = ''; // Replace with your database password
+
+$options = array(
+    'cluster' => 'ap2',
+    'useTLS' => true
+  );
+  $pusher = new Pusher\Pusher(
+    'bb168db3fb3adf7ea72d',
+    '46e5249a8ca361c08113',
+    '1898433',
+    $options
+  );
+
+
 
 try {
     // Create a new PDO instance
