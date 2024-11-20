@@ -69,7 +69,7 @@
                     <?php else: ?>
                         <li class="nav-item">
                             <a class="nav-link d-flex align-items-center" href="../index.php">
-                                <i class="fa fa-user me-1"></i> Profile
+                                <i class="fa fa-user me-1"></i> Logout
                             </a>
                         </li>
                     <?php endif; ?>

@@ -111,28 +111,33 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                                     </p>
                                     <p class="card-text">
                                         <small class="text-muted">
-                                            Status: 
+                                            Status:
                                             <span class="badge <?php echo $exam['status'] ? 'bg-success' : 'bg-secondary'; ?>">
-                                                <?php echo $exam['status'] ? 'Published' : 'Draft'; ?>
+                                                <?php echo $exam['status'] ?>
                                             </span>
                                         </small>
                                     </p>
-                                    
+
                                     <div class="btn-group">
-                                        <a href="edit-exam.php?id=<?php echo $exam['id']; ?>&course_id=<?php echo $course_id; ?>" 
-                                           class="btn btn-primary btn-sm">
+                                        <a href="edit-exam.php?id=<?php echo $exam['id']; ?>&course_id=<?php echo $course_id; ?>"
+                                            class="btn btn-primary btn-sm">
                                             <i class="fa fa-edit"></i> Edit
                                         </a>
-                                        <a href="delete-exam.php?id=<?php echo $exam['id']; ?>&course_id=<?php echo $course_id; ?>" 
-                                           class="btn btn-danger btn-sm"
-                                           onclick="return confirm('Are you sure you want to delete this exam?')">
+                                        <a href="delete-exam.php?id=<?php echo $exam['id']; ?>&course_id=<?php echo $course_id; ?>"
+                                            class="btn btn-danger btn-sm"
+                                            onclick="return confirm('Are you sure you want to delete this exam?')">
                                             <i class="fa fa-trash"></i> Delete
                                         </a>
-                                        <a href="toggle-exam-status.php?id=<?php echo $exam['id']; ?>&course_id=<?php echo $course_id; ?>" 
-                                           class="btn <?php echo $exam['status'] ? 'btn-secondary' : 'btn-success'; ?> btn-sm">
-                                            <i class="fa fa-toggle-on"></i> 
-                                            <?php echo $exam['status'] ? 'Unpublish' : 'Publish'; ?>
-                                        </a>
+                                        <form method="POST" action="../backend/toggle-exam-status.php" style="display:inline;">
+                                            <input type="hidden" name="id" value="<?php echo htmlspecialchars($exam['id']); ?>">
+                                            <input type="hidden" name="course_id" value="<?php echo htmlspecialchars($course_id); ?>">
+                                            <button type="submit"
+                                                class="btn <?php echo $exam['status'] === 'unpublished' ? 'btn-success' : 'btn-secondary'; ?> btn-sm">
+                                                <i class="fa fa-toggle-on"></i>
+                                                <?php echo $exam['status'] === 'unpublished' ? 'Publish' : 'Unpublish'; ?>
+                                            </button>
+                                        </form>
+
                                     </div>
                                 </div>
                             </div>
