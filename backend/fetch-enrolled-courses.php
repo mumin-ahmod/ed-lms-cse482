@@ -13,9 +13,9 @@ $user_id = $_SESSION['user_id'];
 try {
     // Fetch enrolled courses for the logged-in user
     $sql = "
-        SELECT courses.Id, courses.Title, courses.Description, courses.Start_date, courses.End_date 
+        SELECT course.Id, course.Title, course.Description, course.Start_date, course.End_date 
         FROM students 
-        JOIN courses ON students.course_id = courses.Id 
+        JOIN courses ON students.course_id = course.Id 
         WHERE students.user_id = :user_id
     ";
     $stmt = $pdo->prepare($sql);

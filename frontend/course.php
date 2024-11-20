@@ -33,6 +33,18 @@ try {
     $stmt = $pdo->prepare($enrolledQuery);
     $stmt->execute(['courseId' => $courseId]);
     $enrolledUsers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+    // Fetch timeline posts for the course
+    $postsQuery = "
+     SELECT title, description, created_at 
+     FROM timeline_posts 
+     WHERE course_id = :courseId 
+     ORDER BY created_at DESC
+ ";
+    $stmt = $pdo->prepare($postsQuery);
+    $stmt->execute(['courseId' => $courseId]);
+    $timelinePosts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (Exception $e) {
     die("An error occurred while fetching data: " . $e->getMessage());
 }
@@ -88,7 +100,7 @@ try {
                                 <ul class="list-group">
                                     <?php foreach ($enrolledUsers as $user) : ?>
                                         <li class="list-group-item">
-                                            <strong><?php echo htmlspecialchars($user['name']); ?></strong> 
+                                            <strong><?php echo htmlspecialchars($user['name']); ?></strong>
                                             (<a href="mailto:<?php echo htmlspecialchars($user['email']); ?>"><?php echo htmlspecialchars($user['email']); ?></a>)
                                         </li>
                                     <?php endforeach; ?>
@@ -98,7 +110,34 @@ try {
 
                         <!-- Timeline Posts Tab -->
                         <div class="tab-pane fade" id="timeline-posts" role="tabpanel" aria-labelledby="timeline-posts-tab">
-                            <?php include 'timeline_posts.php'; ?>
+                            <!-- Timeline Posts Section -->
+                            <div class="timeline-posts-section">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h4 class="section-title">Timeline Posts</h4>
+                                    <!-- Post Button with Icon -->
+
+                                    <a href="timeline_post_create.php?id=<?php echo $courseId; ?>" class="btn btn-primary"> Post</a>
+
+
+                                </div>
+
+                                <!-- Display Timeline Posts -->
+                                <?php if (empty($timelinePosts)) : ?>
+                                    <p>No posts available for this course.</p>
+                                <?php else : ?>
+                                    <?php foreach ($timelinePosts as $post) : ?>
+                                        <div class="card mb-3 shadow-sm">
+                                            <div class="card-body">
+                                                <h5 class="card-title"><?php echo htmlspecialchars($post['title']); ?></h5>
+                                                <p class="card-text"><?php echo htmlspecialchars($post['description']); ?></p>
+                                                <p class="card-text"><small class="text-muted">Posted on <?php echo date("F j, Y", strtotime($post['created_at'])); ?></small></p>
+                                            </div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+
+                                <!-- Add more timeline posts as necessary -->
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -12,6 +12,9 @@
             <li class="nav-item">
                 <a class="nav-link sidebar-link" href="blog-index.php">My Blogs</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link sidebar-link" href="student-exams.php">Exams</a>
+            </li>
         </ul>
     </div>
 </aside>

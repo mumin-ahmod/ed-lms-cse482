@@ -1,5 +1,32 @@
 <?php
-session_start(); // Start the session to access session variables
+// Start the session
+session_start();
+
+// Include the database connection
+require_once '../backend/db.php'; // Adjust the path to your db.php
+
+// Initialize courses array
+$courses = [];
+
+// Check if the user is logged in
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id']; // Get the logged-in user's ID
+
+    try {
+        // Query to fetch courses assigned to the teacher
+        $sql = "SELECT c.Id, c.Title, c.Start_date 
+                FROM Course c
+                JOIN teachers t ON c.Id = t.course_id
+                WHERE t.user_id = :user_id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(['user_id' => $user_id]);
+
+        // Fetch courses
+        $courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (Exception $e) {
+        die("Error fetching courses: " . $e->getMessage());
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,41 +50,21 @@ session_start(); // Start the session to access session variables
                     <div class="p-4">
                         <h2>My Courses</h2>
                         <div class="row">
-                            <?php
-                            include '../backend/db.php';
-
-                            // Check if the session is set for user_id
-                            if (isset($_SESSION['user_id'])) {
-                                $user_id = $_SESSION['user_id']; // Get user_id from session
-
-                                // Query to fetch courses assigned to the teacher from the 'teachers' table
-                                $sql = "SELECT c.Title, c.Start_date 
-                                        FROM Course c
-                                        JOIN teachers t ON c.Id = t.course_id
-                                        WHERE t.user_id = :user_id";
-                                $stmt = $pdo->prepare($sql);
-                                $stmt->execute(['user_id' => $user_id]);
-
-                                // Check if courses are found and display them
-                                if ($stmt->rowCount() > 0) {
-                                    while ($course = $stmt->fetch()) {
-                                        echo "<div class='col-md-4 mb-4'>
-                                                <div class='card border-primary'>
-                                                    <div class='card-body'>
-                                                        <h5 class='card-title'>" . htmlspecialchars($course['Title']) . "</h5>
-                                                        <p class='card-text'>" . htmlspecialchars($course['Start_date']) . "</p>
-                                                        <a href='teacher-course.php' class='btn btn-primary'>View Details</a>
-                                                    </div>
-                                                </div>
-                                              </div>";
-                                    }
-                                } else {
-                                    echo "<p>No courses found for this teacher.</p>";
-                                }
-                            } else {
-                                echo "<p>Please log in to view your courses.</p>";
-                            }
-                            ?>
+                            <?php if (count($courses) > 0) : ?>
+                                <?php foreach ($courses as $course) : ?>
+                                    <div class="col-md-4 mb-4">
+                                        <div class="card border-primary">
+                                            <div class="card-body">
+                                                <h5 class="card-title"><?php echo htmlspecialchars($course['Title']); ?></h5>
+                                                <p class="card-text"><?php echo htmlspecialchars($course['Start_date']); ?></p>
+                                                <a href="teacher-course.php?id=<?php echo htmlspecialchars($course['Id']); ?>" class="btn btn-primary">View Details</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php else : ?>
+                                <p>No courses found for this teacher.</p>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </main>

@@ -1,3 +1,5 @@
+
+
 <header>
     <!-- Bootstrap Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-custom shadow-sm py-3">
@@ -35,9 +37,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="./chat.php">Chat</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./dashboard.php">Dashboard</a>
-                    </li>
+                    <!-- Dashboard link based on role -->
+                   
+                            <li class="nav-item">
+                                <a class="nav-link" href="./dashboard.php">Student Dashboard</a>
+                            </li>
+                       
+
+                
                 </ul>
 
                 <!-- Search Form with FontAwesome Icon -->
