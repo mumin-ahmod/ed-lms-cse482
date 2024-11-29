@@ -16,7 +16,9 @@ if (!isset($_POST['id']) || !isset($_POST['course_id'])) {
 }
 
 $exam_id = intval($_POST['id']);
-$course_id = intval($_POST['course_id']);
+$course_id= intval($_POST['course_id']);
+
+echo $exam_id, $course_id;
 
 try {
     // Verify that the exam exists and belongs to this user and course
@@ -27,7 +29,7 @@ try {
 
     if (!$exam) {
         $_SESSION['error'] = "Exam not found or you don't have permission to modify it.";
-        header("Location: teacher-exam.php?course_id=" . $course_id);
+        header("Location: ../frontend/teacher-course.php?id=".$course_id);
         exit();
     }
 
@@ -50,5 +52,5 @@ try {
 }
 
 // Redirect back to the exam list page
-header("Location: teacher-exam.php?course_id=" . $course_id);
+header("Location: ../frontend/teacher-course.php?id=".$course_id);
 exit();

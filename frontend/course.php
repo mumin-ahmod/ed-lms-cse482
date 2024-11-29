@@ -11,6 +11,7 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
 $courseId = intval($_GET['id']);
 $course = null;
 $enrolledUsers = [];
+$exams = []; // Array to store exams
 
 try {
     // Fetch course details
@@ -34,17 +35,26 @@ try {
     $stmt->execute(['courseId' => $courseId]);
     $enrolledUsers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
-    // Fetch timeline posts for the course
+    // Fetch timeline posts
     $postsQuery = "
-     SELECT title, description, created_at 
-     FROM timeline_posts 
-     WHERE course_id = :courseId 
-     ORDER BY created_at DESC
- ";
+        SELECT title, description, created_at 
+        FROM timeline_posts 
+        WHERE course_id = :courseId 
+        ORDER BY created_at DESC
+    ";
     $stmt = $pdo->prepare($postsQuery);
     $stmt->execute(['courseId' => $courseId]);
     $timelinePosts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Fetch exams for the course
+    $examsQuery = "
+        SELECT id, title, start_date, start_time, status 
+        FROM exams 
+        WHERE course_id = :courseId 
+    ";
+    $stmt = $pdo->prepare($examsQuery);
+    $stmt->execute(['courseId' => $courseId]);
+    $exams = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (Exception $e) {
     die("An error occurred while fetching data: " . $e->getMessage());
 }
@@ -86,6 +96,10 @@ try {
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="timeline-posts-tab" data-bs-toggle="tab" data-bs-target="#timeline-posts" type="button" role="tab" aria-controls="timeline-posts" aria-selected="false">Timeline Posts</button>
+                        </li>
+
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="exams-tab" data-bs-toggle="tab" data-bs-target="#exams" type="button" role="tab" aria-controls="exams" aria-selected="false">Exams</button>
                         </li>
                     </ul>
 
@@ -138,6 +152,29 @@ try {
 
                                 <!-- Add more timeline posts as necessary -->
                             </div>
+                        </div>
+
+                        <!-- Exams Tab -->
+                        <div class="tab-pane fade" id="exams" role="tabpanel" aria-labelledby="exams-tab">
+                            <h4>Exams</h4>
+                            <?php if (empty($exams)) : ?>
+                                <p>No exams available for this course.</p>
+                            <?php else : ?>
+                                <div class="row">
+                                    <?php foreach ($exams as $exam) : ?>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card shadow-sm">
+                                                <div class="card-body">
+                                                    <h5 class="card-title"><?php echo htmlspecialchars($exam['title']); ?></h5>
+                                                  
+                                                    <p class="card-text"><small class="text-muted">Exam Date: <?php echo date("F j, Y", strtotime($exam['start_date'])); ?></small></p>
+                                                    <a href="exam-details.php?id=<?php echo $exam['id']; ?>" class="btn btn-primary btn-sm">View Exam</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

@@ -12,6 +12,7 @@ $courseId = intval($_GET['id']);
 $course = null;
 $enrolledUsers = [];
 $timelinePosts = [];
+$exams = [];
 
 // Fetch course details
 try {
@@ -24,6 +25,12 @@ try {
     if (!$course) {
         die("Course not found.");
     }
+
+    // Fetch exams for the current course
+    $examsQuery = "SELECT id, title, start_date, start_time, status FROM exams WHERE course_id = :courseId ORDER BY start_date ASC, start_time ASC";
+    $stmt = $pdo->prepare($examsQuery);
+    $stmt->execute(['courseId' => $courseId]);
+    $exams = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // Fetch enrolled users
     $enrolledQuery = "
@@ -189,38 +196,79 @@ while ($student = $stmt->fetch()) {
 
                             <!-- Exams Tab -->
                             <div class="tab-pane fade" id="exams" role="tabpanel" aria-labelledby="exams-tab">
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <h4 class="section-title">Exams</h4>
-                                    <a href="create-exam.php?course_id=<?php echo $courseId; ?>" class="btn btn-success">Create New Exam</a>
+                                <div class="exams-section p-4">
+                                    <div class="d-flex justify-content-between align-items-center mb-4">
+                                        <h2>Exams for <?php echo htmlspecialchars($course['Title']); ?></h2>
+                                        <!-- Button to Create New Exam -->
+                                        <a href="create-exam.php?course_id=<?php echo $courseId; ?>" class="btn btn-success">
+                                            <i class="fa fa-plus"></i> Create New Exam
+                                        </a>
+                                    </div>
+
+                                    <!-- List of Existing Exams -->
+                                    <?php if (empty($exams)): ?>
+                                        <div class="alert alert-info">
+                                            No exams have been created for this course yet.
+                                        </div>
+                                    <?php else: ?>
+                                        <div class="accordion" id="examsAccordion">
+                                            <?php foreach ($exams as $index => $exam): ?>
+                                                <div class="card mb-3">
+                                                    <div class="card-header" id="heading-<?php echo $index; ?>">
+                                                        <h5 class="mb-0">
+                                                            <button class="btn btn-link" type="button" data-bs-toggle="collapse"
+                                                                data-bs-target="#collapse-<?php echo $index; ?>" aria-expanded="false"
+                                                                aria-controls="collapse-<?php echo $index; ?>">
+                                                                <?php echo htmlspecialchars($exam['title']); ?>
+                                                            </button>
+                                                        </h5>
+                                                    </div>
+
+                                                    <div id="collapse-<?php echo $index; ?>" class="collapse"
+                                                        aria-labelledby="heading-<?php echo $index; ?>" data-bs-parent="#examsAccordion">
+                                                        <div class="card-body">
+                                                            <p>
+                                                                <strong>Date:</strong> <?php echo date('F j, Y', strtotime($exam['start_date'])); ?><br>
+                                                                <strong>Time:</strong> <?php echo date('g:i A', strtotime($exam['start_time'])); ?>
+                                                            </p>
+                                                            <p>
+                                                                <strong>Status:</strong>
+                                                                <span class="badge <?php echo $exam['status'] === 'published' ? 'bg-success' : 'bg-secondary'; ?>">
+                                                                    <?php echo htmlspecialchars(ucfirst($exam['status'])); ?>
+                                                                </span>
+                                                            </p>
+                                                            <div class="">
+                                                                <a href="edit-exam.php?id=<?php echo $exam['id']; ?>&course_id=<?php echo $courseId; ?>"
+                                                                    class="btn btn-primary btn-sm">
+                                                                    <i class="fa fa-edit"></i> Edit
+                                                                </a>
+                                                                <a href="delete-exam.php?id=<?php echo $exam['id']; ?>&course_id=<?php echo $courseId; ?>"
+                                                                    class="btn btn-danger btn-sm"
+                                                                    onclick="return confirm('Are you sure you want to delete this exam?')">
+                                                                    <i class="fa fa-trash"></i> Delete
+                                                                </a>
+                                                                <form method="POST" action="../backend/toggle-exam-status.php" style="display:inline;">
+                                                                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($exam['id']); ?>">
+                                                                    <input type="hidden" name="course_id" value="<?php echo htmlspecialchars($courseId); ?>">
+                                                                    <button type="submit"
+                                                                        class="btn <?php echo $exam['status'] === 'unpublished' ? 'btn-success' : 'btn-secondary'; ?> btn-sm">
+                                                                        <i class="fa fa-toggle-on"></i>
+                                                                        <?php echo $exam['status'] === 'unpublished' ? 'Publish' : 'Unpublish'; ?>
+                                                                    </button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
-
-                                <!-- Fetch and Display Exams -->
-                                <?php
-                                // Fetch exams for the current course
-                                $examsQuery = "SELECT id, title, start_date, start_time FROM exams WHERE course_id = :courseId ORDER BY start_date ASC, start_time ASC";
-                                $stmt = $pdo->prepare($examsQuery);
-                                $stmt->execute(['courseId' => $courseId]);
-                                $exams = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-                                if (empty($exams)): ?>
-                                    <p>No exams scheduled for this course.</p>
-                                <?php else: ?>
-                                    <ul class="list-group">
-                                        <?php foreach ($exams as $exam): ?>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                <div>
-                                                    <h5 class="mb-1"><?php echo htmlspecialchars($exam['title']); ?></h5>
-                                                    <small>Scheduled: <?php echo htmlspecialchars($exam['start_date']); ?> at <?php echo htmlspecialchars($exam['start_time']); ?></small>
-                                                </div>
-                                                <div>
-                                                    <a href="edit-exam.php?id=<?php echo $exam['id']; ?>" class="btn btn-primary btn-sm">Edit</a>
-                                                    <a href="delete-exam.php?id=<?php echo $exam['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this exam?')">Delete</a>
-                                                </div>
-                                            </li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                <?php endif; ?>
                             </div>
+
+
+
+
                         </div>
 
 
