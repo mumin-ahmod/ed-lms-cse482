@@ -6,11 +6,194 @@
     background-color: #948979 !important;
 }
 
+/* CSS Sprite Image */
+.social-icon {
+    display: inline-block;
+    width: 40px;  /* Set based on icon size */
+    height: 40px; /* Set based on icon size */
+    background-image: url('../images/cssspite.png');  /* Correct relative path */
+    background-size: 675px 180px;  /* Adjust based on the size of your full sprite image */
+    border-radius: 100px;
+    background-repeat: no-repeat;
+}
+
+
+/* Set specific positions for each icon */
+.facebook { background-position: 0 0; }         /* First icon */
+.instagram { background-position: -40px 0; }      /* Second icon */
+.twitter { background-position: -80px 0; }    /* Third icon */
+.linkedin { background-position: -120px 0; }    /* Fourth icon */
+
+
+/* live search  */
+/* Search Box with Search Button */
+.search-container button {
+    background-color: white;
+    color: black;
+    border: 0px solid #ccc; /* Matches input border */
+    height: 100%;
+}
+
+.search-container button:hover {
+    color: black;
+    border-color: 1px #00b4d8; /* Darker border on hover */
+}
+
+button{
+    border: 0;
+    outline: 0;
+}
+
+button .fa-solid{
+    width: 20px;
+    height: 37px;
+    color:#ccc;
+    font-size: 15px;
+}
+
+button .fa-magnifying-glass{
+    align-content: center;
+}
+
+/* Result Box for the Search Box -> Displaying Suggestions */
+.result-box {
+    position: absolute;
+    top: 80%; /* Align below the search input */
+    left: 0;
+    z-index: 1050;
+    width: 100%; /* Match the width of the search container */
+    background-color: whitesmoke;
+    border: 1px solid #000000;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none; /* Initially hidden */
+    max-height: 300px; /* Limit height */
+    overflow-y: auto; /* Scroll for large lists */
+}
+
+.result-box ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; /* Remove bullet points */
+}
+
+.result-box ul li {
+    padding: 6px 12px; /* Reduced padding for a more compact look */
+    border-bottom: 1px solid #7aadcd; /* Divider between items */
+    border-top: 1px solid #7aadcd;
+    cursor: pointer; /* Show pointer cursor */
+    box-sizing: border-box; /* Include padding in width calculation */
+    width: 100%; /* Make the items fill the container */
+    display: block;
+    line-height: 1.5; /* Adjust line height to reduce vertical spacing */
+}
+
+.result-box ul li:last-child {
+    border-bottom: none; /* Remove the border for the last item */
+}
+
+.result-box ul li:hover {
+    background-color: #666; /* Darker background on hover */
+    color: white; /* White text on hover */
+}
+
 /* About Us */
+/* Slide Animation */
+.slider-frame{
+    overflow: hidden;
+    height: 250px;
+    width: 100%;
+    margin-top: 15px;
+    background-color: #006f8d;
+    opacity: 0.8;
+}
+
+@-webkit-keyframes slide-animation{
+    0% {left: 60px;}
+    10% {left: 60px;}
+    20% {left: 1200px;}
+    30% {left: 1200px;}
+    40% {left: 2400px;}
+    50% {left: 2400px;}
+    60% {left: 1200px;}
+    70% {left: 1200px;}
+    80% {left: 60px;}
+    90% {left: 60px;}
+    100% {left: 60px;}
+}
+
+.slide-images{
+    width: 3600px;
+    height: 250px;
+    
+    margin: 0 0 0 -2400px;
+    position: relative;
+    -webkit-animation-name: slide-animation;
+    -webkit-animation-duration: 20s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-play-state: running;
+}
+
+.img-container{
+    height: 250px;
+    width: 1200px;
+    border-top: 2px #000000;
+    position: relative;
+    float: left;
+}
+
+/* General Image Styling */
+.detail img,
+.mission img,
+.life-at-company img,
+.our-services img {
+    width: 100%;          /* Full width of the container */
+    max-width: 700px;     /* Maximum width for standardization */
+    height: 400px;        /* Fixed height */
+    object-fit: cover;    /* Maintain aspect ratio and cover the container */
+    display: block;       /* Center images properly */
+    margin: 0 auto 20px;  /* Center image and add space below */
+}
+
+/* Flex Container Styling for Sections */
+.mission, .life-at-company, .our-services, .detail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;  /* Stack content vertically */
+    text-align: center;      /* Center text */
+    margin-bottom: 40px;     /* Add space between sections */
+}
+
+@media (min-width: 768px) {
+    .mission, .life-at-company, .our-services, .detail {
+        flex-direction: row;  /* Align content side-by-side on larger screens */
+        text-align: left;     /* Align text to the left */
+    }
+
+    .mission img, .life-at-company img, .our-services img, .detail img {
+        margin: 0 20px;  /* Add space between image and text */
+    }
+}
+
+/* Additional Styling for Consistency */
+.content h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.content p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+
 
 /* Global Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
@@ -22,6 +205,7 @@ nav ul {
 }
 
 nav ul li {
+    font-family: "Parkinsans", sans-serif;
     display: inline;
     margin-right: 20px;
 }
@@ -43,6 +227,7 @@ footer {
     padding: 1em 0;
     width: 100%;
     bottom: 0;
+    font-family: "Ubuntu", sans-serif;
 }
 
 /* homepage styles started */

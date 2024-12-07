@@ -1,16 +1,27 @@
+<?php
+// Start with PHP logic to handle cookies before any HTML output
+if (isset($_COOKIE['message'])) {
+    $message = htmlspecialchars($_COOKIE['message']);
+    // Clear the cookie by setting it to expire in the past
+    setcookie('message', '', time() - 3600, '/');
+} else {
+    $message = null; // Ensure $message is defined to avoid undefined variable errors
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
+    <link rel="js"
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         /* Custom styles */
         .login-container {
@@ -20,6 +31,7 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
         }
 
         .tab-content-container {
@@ -42,17 +54,22 @@
 <body>
 
     <!-- Include Navbar -->
-    <?php include  __DIR__. '/header.php'; ?>
-    <?php
+    <?php include  __DIR__ . '/header.php'; ?>
 
-    
-    // Check if the 'message' cookie is set
-    if (isset($_COOKIE['message'])) {
-        echo "<div class='alert alert-warning'>" . htmlspecialchars($_COOKIE['message']) . "</div>";
-        // Clear the cookie by setting it to expire in the past
-        setcookie('message', '', time() - 3600, '/');
-    }
-    ?>
+    <!-- set cookies here it will goes automitically after 3 sec -->
+    <?php if ($message): ?>
+        <div class='alert alert-warning' id='cookieMessage'><?= $message ?></div>
+    <?php endif; ?>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
+                const messageDiv = document.getElementById('cookieMessage');
+                if (messageDiv) {
+                    messageDiv.style.display = 'none';
+                }
+            }, 3000); // 3000 milliseconds = 3 seconds
+        });
+    </script>
 
     <div class="container">
         <div class="login-container">
@@ -75,7 +92,7 @@
 
                 <!-- Student Login Form -->
                 <div class="tab-pane fade show active" id="user-login" role="tabpanel" aria-labelledby="user-login-tab">
-                <form id="user-login-form" action="./backend/login.php"  method="POST">
+                    <form id="user-login-form" action="./backend/login.php" method="POST">
 
 
                         <input type="hidden" name="role" value="student"> <!-- Hidden field to identify role -->
@@ -100,7 +117,7 @@
 
                 <!-- Teacher Login Form -->
                 <div class="tab-pane fade" id="teacher-login" role="tabpanel" aria-labelledby="teacher-login-tab">
-                <form id="user-login-form" action="./backend/login.php" method="POST">
+                    <form id="teacher-login-form" action="./backend/login.php" method="POST">
 
 
                         <input type="hidden" name="role" value="teacher"> <!-- Hidden field to identify role -->
@@ -126,7 +143,7 @@
 
                 <!-- Admin Login Form -->
                 <div class="tab-pane fade" id="admin-login" role="tabpanel" aria-labelledby="admin-login-tab">
-                <form id="user-login-form" action="<?php echo __DIR__ . './backend/login.php'; ?>" method="POST">
+                    <form id="admin-login-form" action="./backend/login.php" method="POST">
 
                         <input type="hidden" name="role" value="admin"> <!-- Hidden field to identify role -->
 
@@ -151,7 +168,7 @@
         </div>
     </div>
 
-    <?php include __DIR__.'/footer.php'; ?>
+    <?php include __DIR__ . '/footer.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

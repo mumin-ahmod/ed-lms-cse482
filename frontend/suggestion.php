@@ -15,12 +15,12 @@ if (isset($_POST['suggestion'])) {
 
     // Check if there are any results
     if ($stmt->rowCount() > 0) {
-        // Fetch and display each row
+        // Fetch and display each row as an <li>
         while ($row = $stmt->fetch()) {
-            echo $row['Title'] . "<br />";
+            echo '<li>' . htmlspecialchars($row['Title']) . '</li>' . '</br>';
         }
     } else {
-        echo "No Title found.";
+        echo '<li>No Title found.</li>';
     }
 }
 

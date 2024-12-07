@@ -1,10 +1,3 @@
-<?php
-// Include the database connection
-require_once '../backend/db.php'; // Adjust the path if db.php is in the root directory
-
-// Fetch all courses from the database (moved to AJAX)
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,8 +7,17 @@ require_once '../backend/db.php'; // Adjust the path if db.php is in the root di
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <title>Explore Courses</title>
+
+    <!-- Preload key fonts -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style">
+
+    <!-- Preload essential images (example: logo and some course images)
+    <link rel="preload" href="../frontend/sample-course-image.jpg" as="image">
+    <link rel="preload" href="../frontend/another-course-image.jpg" as="image"> -->
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -28,6 +30,7 @@ require_once '../backend/db.php'; // Adjust the path if db.php is in the root di
     <!-- Main Content for Course Explore Page -->
     <div class="container py-5">
         <h1 class="text-center mb-5">Explore Courses</h1>
+
         <div class="row row-cols-1 row-cols-md-3 g-4" id="courseContainer">
             <p class="text-center" id="noCoursesMessage">Loading courses...</p>
         </div>
@@ -73,17 +76,15 @@ require_once '../backend/db.php'; // Adjust the path if db.php is in the root di
                 const courseCard = `
                     <div class="col">
                         <div class="card h-100 course-card">
-                            <img src="../images/${course.Image}" class="card-img-top" alt="${course.Title}">
+                            <img src="../frontend/${course.Image}" class="card-img-top" alt="${course.Title}" loading="lazy">
                             <div class="card-body">
                                 <h5 class="card-title">${course.Title}</h5>
                                 <p class="card-text">${course.Description}</p>
                                 <p class="course-meta">Start Date: ${course.Start_date}</p>
                                 ${course.End_date ? `<p class="course-meta">End Date: ${course.End_date}</p>` : ""}
-                             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#enrollModal" data-course-id="${course.Id}" data-course-title="${course.Title}">
-    Enroll
-</button>
-
-
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#enrollModal" data-course-id="${course.Id}" data-course-title="${course.Title}">
+                                    Enroll
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -131,9 +132,6 @@ require_once '../backend/db.php'; // Adjust the path if db.php is in the root di
             </div>
         </div>
     </div>
-
-
-
 
 </body>
 

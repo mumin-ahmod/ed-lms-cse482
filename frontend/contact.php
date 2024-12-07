@@ -17,7 +17,7 @@
     <!-- Include Navbar -->
     <?php include 'header.php'; ?>
     <div class="contact-section">
-        <h2>Contact Us</h2>
+        <h2 class="text-primary">Contact Us</h2>
         <p>If you have any questions or inquiries, please send us a message using the form below:</p>
 
         <!-- PHP script to handle form submission -->

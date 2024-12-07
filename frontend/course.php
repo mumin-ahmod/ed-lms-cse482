@@ -130,7 +130,7 @@ try {
                                     <h4 class="section-title">Timeline Posts</h4>
                                     <!-- Post Button with Icon -->
 
-                                    <a href="timeline_post_create.php?id=<?php echo $courseId; ?>" class="btn btn-primary"> Post</a>
+                                    <!-- <a href="timeline_post_create.php?id=<?php echo $courseId; ?>" class="btn btn-primary"> Post</a> -->
 
 
                                 </div>

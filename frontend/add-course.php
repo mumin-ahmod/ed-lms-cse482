@@ -8,18 +8,49 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $description = $_POST['description'];
     $start_date = $_POST['start_date'];
     $end_date = !empty($_POST['end_date']) ? $_POST['end_date'] : NULL;
-    $image = $_POST['image'];
+
+    // Handle image upload
+    if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+        // Set the target directory for image uploads
+        $upload_dir = 'uploads/';
+        $file_name = basename($_FILES['image']['name']);
+        $target_file = $upload_dir . $file_name;
+        $file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+        // Check if the file is an image
+        if (in_array($file_type, ['jpg', 'jpeg', 'png', 'gif'])) {
+            // Move the uploaded file to the target directory
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $target_file)) {
+                $image_path = $target_file; // Store the file path in the database
+            } else {
+                echo "Sorry, there was an error uploading your file.";
+                exit();
+            }
+        } else {
+            echo "Only image files are allowed.";
+            exit();
+        }
+    } else {
+        $image_path = NULL; // If no image was uploaded
+    }
 
     // Insert the course into the database
     $sql = "INSERT INTO Course (Title, Description, Start_date, End_date, Image) VALUES (:title, :description, :start_date, :end_date, :image)";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['title' => $title, 'description' => $description, 'start_date' => $start_date, 'end_date' => $end_date, 'image' => $image]);
+    $stmt->execute([
+        'title' => $title,
+        'description' => $description,
+        'start_date' => $start_date,
+        'end_date' => $end_date,
+        'image' => $image_path,
+    ]);
 
     // Redirect to the courses page after adding
     header("Location: admin-course.php");
     exit();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="container mt-5">
         <h2>Add New Course</h2>
-        <form action="add-course.php" method="POST">
+        <form action="add-course.php" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="title" class="form-label">Course Title</label>
                 <input type="text" class="form-control" id="title" name="title" required>
@@ -53,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label">Image</label>
-                <input type="text" class="form-control" id="image" name="image">
+                <input type="file" class="form-control" id="image" name="image" required>
             </div>
             <button type="submit" class="btn btn-primary">Add Course</button>
             <a href="admin-course.php" class="btn btn-secondary">Back to Courses</a>

@@ -20,7 +20,8 @@
 
     <!-- Blogs Index Page -->
     <div class="container my-5">
-        <h4 class="section-title text-center mb-4">My Blogs</h4>
+        <h4 class="section-title text-center mb-4" style="color: navy;">My Blogs</h4>
+
 
         <!-- Button to Post a New Blog -->
         <div class="text-end mb-3">
@@ -138,6 +139,37 @@
                     alert('An unexpected error occurred.');
                 });
         });
+
+        // Function to delete a blog
+        function deleteBlog(blogId) {
+            if (confirm('Are you sure you want to delete this blog?')) {
+                // Send a POST request to delete-blog.php
+                fetch('../backend/delete-blog.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id: blogId
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Remove the blog card from the DOM
+                            const blogCard = document.getElementById(`blog-${blogId}`);
+                            blogCard.remove();
+                            alert('Blog deleted successfully!');
+                        } else {
+                            alert('Error deleting blog: ' + data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An unexpected error occurred.');
+                    });
+            }
+        }
     </script>
 </body>
 
