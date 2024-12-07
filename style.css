@@ -1,0 +1,721 @@
+/* Custom navbar background color */
+.bg-custom {
+    background-color: #153448 !important;
+}
+.bg-custom-f{
+    background-color: #948979 !important;
+}
+
+/* CSS Sprite Image */
+.social-icon {
+    display: inline-block;
+    width: 40px;  /* Set based on icon size */
+    height: 40px; /* Set based on icon size */
+    background-image: url('../images/cssspite.png');  /* Correct relative path */
+    background-size: 675px 180px;  /* Adjust based on the size of your full sprite image */
+    border-radius: 100px;
+    background-repeat: no-repeat;
+}
+
+
+/* Set specific positions for each icon */
+.facebook { background-position: 0 0; }         /* First icon */
+.instagram { background-position: -40px 0; }      /* Second icon */
+.twitter { background-position: -80px 0; }    /* Third icon */
+.linkedin { background-position: -120px 0; }    /* Fourth icon */
+
+
+/* live search  */
+/* Search Box with Search Button */
+.search-container button {
+    background-color: white;
+    color: black;
+    border: 0px solid #ccc; /* Matches input border */
+    height: 100%;
+}
+
+.search-container button:hover {
+    color: black;
+    border-color: 1px #00b4d8; /* Darker border on hover */
+}
+
+button{
+    border: 0;
+    outline: 0;
+}
+
+button .fa-solid{
+    width: 20px;
+    height: 37px;
+    color:#ccc;
+    font-size: 15px;
+}
+
+button .fa-magnifying-glass{
+    align-content: center;
+}
+
+/* Result Box for the Search Box -> Displaying Suggestions */
+.result-box {
+    position: absolute;
+    top: 80%; /* Align below the search input */
+    left: 0;
+    z-index: 1050;
+    width: 100%; /* Match the width of the search container */
+    background-color: whitesmoke;
+    border: 1px solid #000000;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none; /* Initially hidden */
+    max-height: 300px; /* Limit height */
+    overflow-y: auto; /* Scroll for large lists */
+}
+
+.result-box ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; /* Remove bullet points */
+}
+
+.result-box ul li {
+    padding: 6px 12px; /* Reduced padding for a more compact look */
+    border-bottom: 1px solid #7aadcd; /* Divider between items */
+    border-top: 1px solid #7aadcd;
+    cursor: pointer; /* Show pointer cursor */
+    box-sizing: border-box; /* Include padding in width calculation */
+    width: 100%; /* Make the items fill the container */
+    display: block;
+    line-height: 1.5; /* Adjust line height to reduce vertical spacing */
+}
+
+.result-box ul li:last-child {
+    border-bottom: none; /* Remove the border for the last item */
+}
+
+.result-box ul li:hover {
+    background-color: #666; /* Darker background on hover */
+    color: white; /* White text on hover */
+}
+
+/* About Us */
+/* Slide Animation */
+.slider-frame{
+    overflow: hidden;
+    height: 250px;
+    width: 100%;
+    margin-top: 15px;
+    background-color: #006f8d;
+    opacity: 0.8;
+}
+
+@-webkit-keyframes slide-animation{
+    0% {left: 60px;}
+    10% {left: 60px;}
+    20% {left: 1200px;}
+    30% {left: 1200px;}
+    40% {left: 2400px;}
+    50% {left: 2400px;}
+    60% {left: 1200px;}
+    70% {left: 1200px;}
+    80% {left: 60px;}
+    90% {left: 60px;}
+    100% {left: 60px;}
+}
+
+.slide-images{
+    width: 3600px;
+    height: 250px;
+    
+    margin: 0 0 0 -2400px;
+    position: relative;
+    -webkit-animation-name: slide-animation;
+    -webkit-animation-duration: 20s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-play-state: running;
+}
+
+.img-container{
+    height: 250px;
+    width: 1200px;
+    border-top: 2px #000000;
+    position: relative;
+    float: left;
+}
+
+/* General Image Styling */
+.detail img,
+.mission img,
+.life-at-company img,
+.our-services img {
+    width: 100%;          /* Full width of the container */
+    max-width: 700px;     /* Maximum width for standardization */
+    height: 400px;        /* Fixed height */
+    object-fit: cover;    /* Maintain aspect ratio and cover the container */
+    display: block;       /* Center images properly */
+    margin: 0 auto 20px;  /* Center image and add space below */
+}
+
+/* Flex Container Styling for Sections */
+.mission, .life-at-company, .our-services, .detail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;  /* Stack content vertically */
+    text-align: center;      /* Center text */
+    margin-bottom: 40px;     /* Add space between sections */
+}
+
+@media (min-width: 768px) {
+    .mission, .life-at-company, .our-services, .detail {
+        flex-direction: row;  /* Align content side-by-side on larger screens */
+        text-align: left;     /* Align text to the left */
+    }
+
+    .mission img, .life-at-company img, .our-services img, .detail img {
+        margin: 0 20px;  /* Add space between image and text */
+    }
+}
+
+/* Additional Styling for Consistency */
+.content h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.content p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+
+
+/* Global Styles */
+body {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    font-family: "Parkinsans", sans-serif;
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.content {
+    padding: 20px;
+    text-align: center;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    width: 100%;
+    bottom: 0;
+    font-family: "Ubuntu", sans-serif;
+}
+
+/* homepage styles started */
+
+/* Hero Section */
+#unique-hero {
+    background: url('images/hero-bg1.jpg') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+}
+
+.unique-hero-section h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.unique-hero-section p {
+    font-size: 1.2rem;
+}
+
+.unique-hero-section .btn-warning {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+}
+
+/* Courses Section */
+#unique-courses h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.unique-course-card {
+    margin-bottom: 30px;
+}
+
+.unique-course-card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* About Section */
+#unique-about h3 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+#unique-about p {
+    font-size: 1.1rem;
+}
+
+#unique-about .btn-secondary {
+    margin-top: 20px;
+}
+
+/* Posts Section */
+#unique-posts h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.unique-post-card {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: none;
+}
+
+.unique-post-card h5 {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.unique-post-card p {
+    font-size: 1rem;
+}
+
+/* Welcome Section Styles */
+.welcome-section {
+    background-color: #3C5B6F;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.welcome-section h3 {
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.welcome-section h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.welcome-section p {
+    font-size: 16px;
+    width: 80%;
+    margin: 0 auto;
+    max-width: 700px;
+}
+
+/* Company Section (Mission, Life at Company, and Our Services) */
+.company-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    background-color: #fff;
+}
+
+.mission, .life-at-company, .our-services {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.mission img, .life-at-company img, .our-services img {
+    width: 700px;
+    height: 450px;
+    border-radius: 5px;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.mission-text, .life-text, .services {
+    width: 50%;
+}
+
+.mission h2, .life-at-company h2, .our-services h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #948979;
+    padding-bottom: 10px;
+}
+
+.mission p, .life-at-company p, .services p {
+    font-size: 16px;
+    color: #555;
+    text-align: justify;
+}
+
+/* Privacy Policy Section */
+.privacy-section {
+    background-color: #e7f0f7;
+    padding: 40px 20px;
+}
+
+.privacy-section h2 {
+    font-size: 28px;
+    color: #006f8d;
+    border-bottom: 2px solid #948979;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.privacy-section p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Terms of Use Section */
+.terms-section {
+    background-color: #f2f2f2;
+    padding: 40px 20px;
+}
+
+.terms-section h2 {
+    font-size: 28px;
+    color: #006f8d;
+    border-bottom: 2px solid #948979;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.terms-section p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Animations */
+.animate-fade-in {
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.animate-slide-left {
+    opacity: 0;
+    transform: translateX(-50%);
+    animation: slideLeft 2s forwards;
+}
+
+@keyframes slideLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-slide-right {
+    opacity: 0;
+    transform: translateX(50%);
+    animation: slideRight 2s forwards;
+}
+
+@keyframes slideRight {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .mission, .life-at-company, .our-services {
+        flex-direction: column;
+    }
+
+    .mission img, .life-at-company img, .our-services img,
+    .mission-text, .life-text, .services {
+        width: 100%;
+        margin: 0;
+    }
+
+    .mission img, .life-at-company img, .our-services img {
+        margin-bottom: 20px;
+    }
+}
+
+/* Contact */
+
+.contact-section {
+    background-color: #fff;
+    padding: 40px 20px;
+    max-width: 600px;
+    margin: 50px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.contact-section h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #948979;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.contact-section p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+}
+
+label {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+span {
+    color: #f9e8e7;
+}
+
+input[type="text"], input[type="email"], input[type="tel"], textarea {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button.btn-submit {
+    padding: 10px 20px;
+    background-color: #948979;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.btn-submit:hover {
+    background-color: #00b4d8;
+}
+
+/* Error and Success Messages */
+.error-messages {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+/* Add animation styles */
+.in-view {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.animate-fade-in {
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+}
+
+.branch-contact {
+    padding: 40px;
+    background-color: #f7f7f7;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.branch-contact h1 {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #948979;
+    padding-bottom: 10px;
+}
+
+.branch {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.branch h3 {
+    font-size: 22px;
+    color: #948979;
+    margin-bottom: 10px;
+}
+
+.branch p {
+    font-size: 16px;
+    color: #333;
+    margin: 5px 0;
+}
+
+.branch i {
+    color: #d52519;
+    margin-right: 10px;
+}
+
+.email-contact {
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    border-radius: 20px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.email-contact p {
+    margin: 0;
+}
+
+.email-contact a {
+    color: #00b4d8;
+    text-decoration: none;
+}
+
+.email-contact i {
+    margin-right: 10px;
+}
+
+/* Sidebar Styling */
+.student-dashboard-sidebar {
+    height: 100vh; /* Full height for the sidebar */
+    position: fixed; /* Keep it fixed on the left */
+    background-color: #f8f9fa; /* Light background color */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: width 0.3s; /* Smooth transition for resizing */
+}
+
+.sidebar-title {
+    font-size: 1.5rem; /* Increase title size */
+    font-weight: bold; /* Bold font for title */
+    margin-bottom: 20px; /* Space below title */
+}
+
+.sidebar-link {
+    font-size: 1.1rem; /* Slightly larger font size */
+    padding: 10px 15px; /* Padding for links */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+}
+
+.sidebar-link:hover {
+    background-color: #DFD0B8; /* Change background on hover */
+    color: white; /* Change text color on hover */
+}
+
+.nav-link.active {
+    background-color: #DFD0B8; /* Active link background */
+    color: white; /* Active link text color */
+}
+
+.nav-link.active:hover {
+    background-color: #948979; /* Darker color for active link on hover */
+}
+
+/* sidebar ends */
+
+/* course timeline page styles start*/
+
+/* Main Content Area */
+.course-timeline-main {
+    padding: 20px; /* Add padding to the main content area */
+}
+
+/* Title Styles */
+.course-timeline-title {
+    font-size: 2rem; /* Title size for the timeline */
+    margin-bottom: 20px; /* Space below title */
+    color: #343a40; /* Darker text for contrast */
+}
+
+/* Section Title Styles */
+.section-title {
+    font-size: 1.5rem; /* Title size for sections */
+    margin-bottom: 10px; /* Space below section titles */
+    color: #DFD0B8; /* Accent color for section titles */
+}
+
+/* Button Styles */
+.btn-group .btn {
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for buttons */
+}
+
+.btn-group .btn:hover {
+    background-color: #948979; /* Darker color for hover effect */
+    transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+/* Card Styles */
+.course-timeline-post,
+.course-class-link,
+.course-exam {
+    border: 1px solid #dee2e6; /* Light border for cards */
+    border-radius: 0.5rem; /* Rounded corners */
+    transition: box-shadow 0.3s; /* Smooth shadow transition */
+}
+
+.course-timeline-post:hover,
+.course-class-link:hover,
+.course-exam:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+}
+
+/* Card Body Styles */
+.card-body {
+    padding: 1.25rem; /* Inner padding for card body */
+}
